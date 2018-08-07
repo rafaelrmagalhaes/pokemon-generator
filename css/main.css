@@ -74,8 +74,12 @@ textarea {
 .copy {
     display: block;
     margin: auto;
-    font-size: 12px;
+    font-size: 14px;
     border: none;
     text-align: right;
     width: 100%;
+}
+
+.copy:active {
+    color: #ccc;
 }
