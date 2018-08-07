@@ -35,8 +35,19 @@ button {
     cursor: pointer;
 }
 
-.code-wrapper {
-    margin: auto;
+button.add {
+    font-size: 16px;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+    color: #fff;
+    background: #28a745;
+    border: none;
+    border-radius: 50%;
+    line-height: 5px;
+    padding: 3px;
+    margin: 3px 3px 3px 10px;
+    vertical-align: 3px;
 }
 
 pre {

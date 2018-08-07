@@ -2,107 +2,233 @@ function generateXML() {
     let code = document.getElementById("code");
 
     // info
-    let pokemon = document.getElementById("pokemon").value;
-    let number = document.getElementById("number").value;
-    let description = document.getElementById("description").value;
-    let exp = document.getElementById("exp").value;
-    let catchRate = document.getElementById("catchRate").value;
+    let pokemon = document.getElementById("pokemon").value || "Pokémon";
+    let number = document.getElementById("number").value || 1;
+    let description = document.getElementById("description").value || "a Pokémon";
+    let exp = document.getElementById("exp").value || 0;
+    let catchRate = document.getElementById("catchRate").value || 0;
 
-    let type = document.getElementById("type").value;
-    let corpse = document.getElementById("corpse").value;
-    let charged = document.getElementById("charged").value;
-    let discharged = document.getElementById("discharged").value;
-    let portrait = document.getElementById("portrait").value;
+    let type = document.getElementById("type").value || 1;
+    let corpse = document.getElementById("corpse").value || 1;
+    let charged = document.getElementById("charged").value || 1;
+    let discharged = document.getElementById("discharged").value || 1;
+    let portrait = document.getElementById("portrait").value || 1;
 
     let spawn = document.getElementById("spawn").value;
-    let targetChangeInterval = document.getElementById("targetChangeInterval").value;
-    let targetChangeChance = document.getElementById("targetChangeChance").value;
-    let weight = document.getElementById("weight").value;
-    let height = document.getElementById("height").value;
+    let targetChangeInterval = document.getElementById("targetChangeInterval").value || 0;
+    let targetChangeChance = document.getElementById("targetChangeChance").value || 0;
+    let weight = document.getElementById("weight").value || 1;
+    let height = document.getElementById("height").value || 1;
 
     // shiny
-    let shinyChance = document.getElementById("shinyChance").value;
-    let shinyType = document.getElementById("shinyType").value;
-    let shinyCorpse = document.getElementById("shinyCorpse").value;
-    let shinyCharged = document.getElementById("shinyCharged").value;
-    let shinyDischarged = document.getElementById("shinyDischarged").value;
-    let shinyPortrait = document.getElementById("shinyPortrait").value;
+    let shinyChance = document.getElementById("shinyChance").value || 0;
+    let shinyType = document.getElementById("shinyType").value || 1;
+    let shinyCorpse = document.getElementById("shinyCorpse").value || 1;
+    let shinyCharged = document.getElementById("shinyCharged").value || 1;
+    let shinyDischarged = document.getElementById("shinyDischarged").value || 1;
+    let shinyPortrait = document.getElementById("shinyPortrait").value || 1;
 
     // evolution
     let evolutionAt = document.getElementById("evolutionAt").value;
-    let evolutionTo = document.getElementById("evolutionTo").value;
-    let stoneID = document.getElementById("stoneID").value;
+    let evolutionTo = document.getElementById("evolutionTo").value || "pokemon";
+    let stoneID = document.getElementById("stoneID").value || 1;
 
     // types
     let firstType = document.getElementById("firstType").value;
     let secondType = document.getElementById("secondType").value;
 
-
     // genders
-    let male = document.getElementById("male").value;
-    let female = document.getElementById("female").value;
+    let male = document.getElementById("male").value || 0;
+    let female = document.getElementById("female").value || 0;
 
     // base stats
-    let hp = document.getElementById("hp").value;
-    let atk = document.getElementById("atk").value;
-    let def = document.getElementById("def").value;
-    let spatk = document.getElementById("spatk").value;
-    let spdef = document.getElementById("spdef").value;
-    let spd = document.getElementById("spd").value;
+    let hp = document.getElementById("hp").value || 1;
+    let atk = document.getElementById("atk").value || 1;
+    let def = document.getElementById("def").value || 1;
+    let spatk = document.getElementById("spatk").value || 1;
+    let spdef = document.getElementById("spdef").value || 1;
+    let spd = document.getElementById("spd").value || 1;
 
     // flags
-    let pushable = document.getElementById("pushable").checked ? 1 : 0;
-    let canpushitems = document.getElementById("canpushitems").checked ? 1 : 0;
-    let canpushcreatures = document.getElementById("canpushcreatures").checked ? 1 : 0;
-    let canwalkonenergy = document.getElementById("canwalkonenergy").checked ? 1 : 0;
-    let canwalkonfire = document.getElementById("canwalkonfire").checked ? 1 : 0;
-    let catchable = document.getElementById("catchable").checked ? 1 : 0;
-    let attackable = document.getElementById("attackable").checked ? 1 : 0;
-    let hostile = document.getElementById("hostile").checked ? 1 : 0;
-    let illusionable = document.getElementById("illusionable").checked ? 1 : 0;
-    let convinceable = document.getElementById("convinceable").checked ? 1 : 0;
-    let targetdistance = document.getElementById("targetdistance").checked ? 1 : 0;
-    let staticattack = document.getElementById("staticattack").value;
-    let runonhealth = document.getElementById("runonhealth").value;
+    let pushable = document.getElementById("pushable").checked;
+    let canpushitems = document.getElementById("canpushitems").checked;
+    let canpushcreatures = document.getElementById("canpushcreatures").checked;
+    let canwalkonenergy = document.getElementById("canwalkonenergy").checked;
+    let canwalkonfire = document.getElementById("canwalkonfire").checked;
+    let catchable = document.getElementById("catchable").checked;
+    let attackable = document.getElementById("attackable").checked;
+    let hostile = document.getElementById("hostile").checked;
+    let illusionable = document.getElementById("illusionable").checked;
+    let convinceable = document.getElementById("convinceable").checked;
+    let targetdistance = document.getElementById("targetdistance").checked;
+    let staticattack = document.getElementById("staticattack").value || 0;
+    let runonhealth = document.getElementById("runonhealth").value || 0;
+
+    let flags = `&lt;flags>`;
+
+    if(pushable) {
+        flags += `
+        &lt;flag pushable="1" />`;
+    }
+
+    if(canpushitems) {
+        flags += `
+        &lt;flag canpushitems="1" />`;
+    }
+
+    if(canpushcreatures) {
+        flags += `
+        &lt;flag canpushcreatures="1" />`;
+    }
+
+    if(canwalkonenergy) {
+        flags += `
+        &lt;flag canwalkonenergy="1" />`;
+    }
+
+    if(canwalkonfire) {
+        flags += `
+        &lt;flag canwalkonfire="1" />`;
+    }
+
+    if(catchable) {
+        flags += `
+        &lt;flag catchable="1" />`;
+    }
+
+    if(attackable) {
+        flags += `
+        &lt;flag attackable="1" />`;
+    }
+
+    if(hostile) {
+        flags += `
+        &lt;flag hostile="1" />`;
+    }
+
+    if(illusionable) {
+        flags += `
+        &lt;flag illusionable="1" />`;
+    }
+
+    if(convinceable) {
+        flags += `
+        &lt;flag convinceable="1" />`;
+    }
+
+    if(targetdistance) {
+        flags += `
+        &lt;flag targetdistance="1" />`;
+    }
+
+    flags += `
+        &lt;flag staticattack="${staticattack}" />
+        &lt;flag runonhealth="${runonhealth}" />
+    &lt;/flags>`;
 
     // moves
     let move1Name = document.getElementById("move1Name").value;
-    let move1Learn = document.getElementById("move1Learn").value;
-    let move1Cast = document.getElementById("move1Cast").value;
-    let move2Name = document.getElementById("move2Name").value;
-    let move2Learn = document.getElementById("move2Learn").value;
-    let move2Cast = document.getElementById("move2Cast").value;
-    let move3Name = document.getElementById("move3Name").value;
-    let move3Learn = document.getElementById("move3Learn").value;
-    let move3Cast = document.getElementById("move3Cast").value;
-    let move4Name = document.getElementById("move4Name").value;
-    let move4Learn = document.getElementById("move4Learn").value;
-    let move4Cast = document.getElementById("move4Cast").value;
+    let move1Learn = document.getElementById("move1Learn").value || 0;
+    let move1Cast = document.getElementById("move1Cast").value || 0;
+    // let move2Name = document.getElementById("move2Name").value || "Move";
+    // let move2Learn = document.getElementById("move2Learn").value || 0;
+    // let move2Cast = document.getElementById("move2Cast").value || 0;
+    // let move3Name = document.getElementById("move3Name").value || "Move";
+    // let move3Learn = document.getElementById("move3Learn").value || 0;
+    // let move3Cast = document.getElementById("move3Cast").value || 0;
+    // let move4Name = document.getElementById("move4Name").value || "Move";
+    // let move4Learn = document.getElementById("move4Learn").value || 0;
+    // let move4Cast = document.getElementById("move4Cast").value || 0;
+
+    let moves = `&lt;moves>`;
+    
+    if(move1Name) {
+        moves += `
+        &lt;move name="${move1Name}" chanceToLearn="${move1Learn}" chanceToCast="${move1Cast}" />`;
+    }
+
+    moves += `
+    &lt;/moves>`;
 
     // abilities
     let firstAbility = document.getElementById("firstAbility").value;
-    let firstAbilityLearn = document.getElementById("firstAbilityLearn").value;
-    let secondAbility = document.getElementById("secondAbility").value;
-    let secondAbilityLearn = document.getElementById("secondAbilityLearn").value;
+    let firstAbilityLearn = document.getElementById("firstAbilityLearn").value || 0;
+    // let secondAbility = document.getElementById("secondAbility").value;
+    // let secondAbilityLearn = document.getElementById("secondAbilityLearn").value || 0;
+
+    let abilities = `&lt;abilities>`;
+    
+    if(firstAbility) {
+        abilities += `
+        &lt;ability name="${firstAbility}" chanceToLearn="${firstAbilityLearn}" />`;
+    }
+
+    // if(secondAbility) {
+    //     abilities += `
+    //     &lt;ability name="${secondAbility}" chanceToLearn="${secondAbilityLearn}" />`;
+    // }
+
+    abilities += `
+    &lt;/abilities>`;
 
     // elements
     let elementNumber = document.getElementById("elementNumber").value;
     let elementDif = document.getElementById("elementDif").value;
     let elementPercent = document.getElementById("elementPercent").value;
 
+    let elements = `&lt;elements>`;
+
+    if(elementNumber) {
+        elements += `
+        &lt;element ${elementPercent}="${elementDif}${elementNumber}" />`;
+    }
+
+    elements += `
+    &lt;/elements>`;
+
     // voices
-    let voiceInterval = document.getElementById("voiceInterval").value;
-    let voiceChance = document.getElementById("voiceChance").value;
-    let voice1 = document.getElementById("voice1").value;
-    let voice2 = document.getElementById("voice2").value;
-    let voice3 = document.getElementById("voice3").value;
+    let voiceInterval = document.getElementById("voiceInterval").value || 0;
+    let voiceChance = document.getElementById("voiceChance").value || 0;
+    let voice = document.getElementById("voice").value;
+
+    let voices = `&lt;voices`;
+    
+    if(voiceChance > 0) {
+        voices += ` interval="${voiceInterval}" chance="${voiceChance}">
+        &lt;voice name="${voice}" />`;
+    } else {
+        voices += `>`;
+    }
+
+    voices += `
+    &lt;/voices>`;
 
     // loots
     let itemID = document.getElementById("itemID").value;
     let itemChance = document.getElementById("itemChance").value;
 
+    let loot = `&lt;loot>`;
+    
+    if(itemID) {
+        loot += `
+        &lt;item id="${itemID}" chance="${itemChance}" />`;
+    }
+
+    loot += `
+    &lt;/loot>`;
+
     // immunity
     let immunity = document.getElementById("immunity").value;
+
+    let immunities = `&lt;immunities>`;
+    
+    if(immunity) {
+        immunities += `
+        &lt;immunity name="${immunity}" />`;
+    }
+
+    immunities += `
+    &lt;/immunities>`;
 
     code.innerHTML = 
 `&lt;?xml version="1.0" encoding="ISO-8859-1"?>
@@ -120,7 +246,7 @@ function generateXML() {
     &lt;evolutions>
         &lt;evolution to="${evolutionTo}" at="${evolutionAt}" stone="${stoneID}" />
     &lt;/evolutions>
-    &lt;type first="${firstType}" second="${secondType}" />
+    &lt;type first="${firstType}" ${secondType ? `second="${secondType}" />` : '/>'}
     &lt;genders>
         &lt;gender name="male" percentage="${male}" />
         &lt;gender name="female" percentage="${female}" />
@@ -133,44 +259,21 @@ function generateXML() {
         &lt;specialDefense value="${spdef}" />
         &lt;speed value="${spd}" />
     &lt;/basestats>
-    &lt;flags>
-        &lt;flag pushable="${pushable}" />
-        &lt;flag canpushitems="${canpushitems}" />
-        &lt;flag canpushcreatures="${canpushcreatures}" />
-        &lt;flag canwalkonenergy="${canwalkonenergy}" />
-        &lt;flag canwalkonfire="${canwalkonfire}" />
-        &lt;flag catchable="${catchable}" />
-        &lt;flag attackable="${attackable}" />
-        &lt;flag hostile="${hostile}" />
-        &lt;flag illusionable="${illusionable}" />
-        &lt;flag convinceable="${convinceable}" />
-        &lt;flag targetdistance="${targetdistance}" />
-        &lt;flag staticattack="${staticattack}" />
-        &lt;flag runonhealth="${runonhealth}" />
-    &lt;/flags>
-    &lt;moves>
-        &lt;move name="${move1Name}" chanceToLearn="${move1Learn}" chanceToCast="${move1Cast}" />
-        &lt;move name="${move2Name}" chanceToLearn="${move2Learn}" chanceToCast="${move2Cast}" />
-        &lt;move name="${move3Name}" chanceToLearn="${move3Learn}" chanceToCast="${move3Cast}" />
-        &lt;move name="${move4Name}" chanceToLearn="${move4Learn}" chanceToCast="${move4Cast}" />
-    &lt;/moves>
-    &lt;abilities>
-        &lt;ability name="${firstAbility}" chanceToLearn="${firstAbilityLearn}" />
-        &lt;ability name="${secondAbility}" chanceToLearn="${secondAbilityLearn}" />
-    &lt;/abilities>
-    &lt;elements>
-        &lt;element ${elementPercent}="${elementDif}${elementNumber}" />
-    &lt;/elements>
-    &lt;voices interval="${voiceInterval}" chance="${voiceChance}">
-        &lt;voice sentence="${voice1}" />
-        &lt;voice sentence="${voice2}" />
-        &lt;voice sentence="${voice3}" />
-    &lt;/voices>
-    &lt;loot>
-        &lt;item id="${itemID}" chance="${itemChance}" />
-    &lt;/loot>
-    &lt;immunities>
-        &lt;immunity name="${immunity}" />
-    &lt;/immunities>
+    ${flags}
+    ${moves}
+    ${abilities}
+    ${elements}
+    ${voices}
+    ${loot}
+    ${immunities}
 &lt;/pokemon>`;
-};
+}
+
+function copy() {
+    const copyText = document.getElementById("code").textContent;
+    const textArea = document.createElement('textarea');
+    textArea.textContent = copyText;
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy");
+}

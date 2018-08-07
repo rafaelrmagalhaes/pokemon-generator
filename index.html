@@ -153,13 +153,14 @@
         </section>
 
         <section class="col-md-6">
-            <h2>Moves</h2>
-        
+            <h2>Moves <button class="add">+</button></h2>
+            
             <label class="mr-2">Move 1</label>
             <input type="text" id="move1Name" placeholder="Name">
             <input type="number" id="move1Learn" placeholder="Chance to learn">
-            <input type="number" id="move1Cast"placeholder="Chance to cast">
-            <br>
+            <input type="number" id="move1Cast" placeholder="Chance to cast">
+            
+            <!-- <br>
             <label class="mr-2">Move 2</label>
             <input type="text" id="move2Name" placeholder="Name">
             <input type="number" id="move2Learn" placeholder="Chance to learn">
@@ -173,24 +174,25 @@
             <label class="mr-2">Move 4</label>
             <input type="text" id="move4Name" placeholder="Name">
             <input type="number" id="move4Learn" placeholder="Chance to learn">
-            <input type="number" id="move4Cast"placeholder="Chance to cast">
+            <input type="number" id="move4Cast"placeholder="Chance to cast"> -->
 
             <hr>
 
-            <h2>Abilities</h2>
+            <h2>Abilities <button class="add">+</button></h2>
         
+            <label class="mr-2">Ability 1</label>
             <select id="firstAbility">
-                <option value="">First: None</option>
-                <option value="cut">First: Cut</option>
-                <option value="flash">First: Flash</option>
-                <option value="fly">First: Fly</option>
-                <option value="headbutt">First: Headbutt</option>
-                <option value="light">First: Light</option>
-                <option value="rock smash">First: Rock Smash</option>
-                <option value="surf">First: Surf</option>
+                <option value="">None</option>
+                <option value="cut">Cut</option>
+                <option value="flash">Flash</option>
+                <option value="fly">Fly</option>
+                <option value="headbutt">Headbutt</option>
+                <option value="light">Light</option>
+                <option value="rock smash">Rock Smash</option>
+                <option value="surf">Surf</option>
             </select>
             <input type="number" id="firstAbilityLearn" placeholder="Chance to learn">
-            <br>
+            <!-- <br>
             <select id="secondAbility">
                 <option value="">Second: None</option>
                 <option value="cut">Second: Cut</option>
@@ -201,11 +203,11 @@
                 <option value="rock smash">Second: Rock Smash</option>
                 <option value="surf">Second: Surf</option>
             </select>
-            <input type="number" id="secondAbilityLearn" placeholder="Chance to learn">
+            <input type="number" id="secondAbilityLearn" placeholder="Chance to learn"> -->
 
             <hr>
 
-            <h2>Elements</h2>
+            <h2>Elements <button class="add">+</button></h2>
             
             <input type="number" id="elementNumber" placeholder="%">
             <select id="elementDif">
@@ -235,18 +237,15 @@
 
             <hr>
 
-            <h2>Voices</h2>
+            <h2>Voices <button class="add">+</button></h2>
             
             <input type="number" id="voiceInterval" placeholder="Interval">
             <input type="number" id="voiceChance" placeholder="Chance">
-            <br>
-            <input type="text" id="voice1" placeholder="Sentence 1">
-            <input type="text" id="voice2" placeholder="Sentence 2">
-            <input type="text" id="voice3" placeholder="Sentence 3">
+            <input type="text" id="voice" placeholder="Sentence">
 
             <hr>
 
-            <h2>Loots</h2>
+            <h2>Loots <button class="add">+</button></h2>
             
             <input type="number" id="itemID" placeholder="Item ID">
             <input type="number" id="itemChance" placeholder="Chance">
@@ -256,6 +255,7 @@
             <h2>Immunity</h2>
             
             <select id="immunity">
+                <option value="">None</option>
                 <option value="bug">Bug</option>
                 <option value="dark">Dark</option>
                 <option value="dragon">Dragon</option>
