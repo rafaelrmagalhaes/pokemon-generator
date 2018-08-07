@@ -22,7 +22,7 @@ input, select {
     width: 150px;
 }
 
-input[type="radio"] {
+input[type="checkbox"] {
     width: auto;
 }
 
@@ -33,4 +33,15 @@ button {
     padding: 10px;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.code-wrapper {
+    margin: auto;
+}
+
+pre {
+    margin: auto;
+    background: #ccc;
+    padding: 20px;
+    font-size: 14px;
 }
