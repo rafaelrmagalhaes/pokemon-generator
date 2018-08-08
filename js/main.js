@@ -1,3 +1,260 @@
+let moveCount = 0;
+let abilityCount = 0;
+let elementCount = 0;
+let voiceCount = 0;
+let lootCount = 0;
+
+function copy() {
+    const copyText = document.getElementById("code").textContent;
+    const textArea = document.createElement('textarea');
+    textArea.textContent = copyText;
+    document.body.append(textArea);
+    textArea.select();
+    document.execCommand("copy");
+}
+
+// MOVES
+function addMove() {
+    moveCount++;
+    
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', `move${moveCount}`);
+
+    const moves = document.getElementById('moves');
+    moves.appendChild(wrapper);
+    
+    const label = document.createElement('label');
+    label.setAttribute('class', 'mr-2');
+    label.innerHTML = `Move ${moveCount}`;
+
+    const name = document.createElement('input');
+    name.setAttribute('type', 'text');
+    name.setAttribute('id', `move${moveCount}Name`);
+    name.setAttribute('placeholder', 'Name');
+
+    const learn = document.createElement('input');
+    learn.setAttribute('type', 'number');
+    learn.setAttribute('id', `move${moveCount}Learn`);
+    learn.setAttribute('placeholder', 'Chance to learn');
+
+    const cast = document.createElement('input');
+    cast.setAttribute('type', 'number');
+    cast.setAttribute('id', `move${moveCount}Cast`);
+    cast.setAttribute('placeholder', 'Chance to cast');
+    
+    wrapper.appendChild(label);
+    wrapper.appendChild(name);
+    wrapper.appendChild(learn);
+    wrapper.appendChild(cast);
+}
+
+function removeMove() {
+    if(moveCount < 1) return;
+
+    const wrapper = document.getElementById('moves');
+    const lastMove = document.getElementById(`move${moveCount}`);
+
+    wrapper.removeChild(lastMove);
+    moveCount--;
+}
+
+// ABILITIES
+function addAbility() {
+    abilityCount++;
+    
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', `ability${abilityCount}`);
+
+    const abilities = document.getElementById('abilities');
+    abilities.appendChild(wrapper);
+    
+    const label = document.createElement('label');
+    label.setAttribute('class', 'mr-2');
+    label.innerHTML = `Ability ${abilityCount}`;
+
+    const select = document.createElement('select');
+    select.setAttribute('id', `select_ability${abilityCount}`);
+    select.insertAdjacentHTML('beforeend', 
+        '<option value="cut">Cut</option>\
+         <option value="flash">Flash</option>\
+         <option value="fly">Fly</option>\
+         <option value="headbutt">Headbutt</option>\
+         <option value="light">Light</option>\
+         <option value="rock smash">Rock Smash</option>\
+         <option value="surf">Surf</option>');
+
+    const learn = document.createElement('input');
+    learn.setAttribute('type', 'number');
+    learn.setAttribute('id', `ability${abilityCount}Learn`);
+    learn.setAttribute('placeholder', 'Chance to learn');
+    
+    wrapper.appendChild(label);
+    wrapper.appendChild(select);
+    wrapper.appendChild(learn);
+}
+
+function removeAbility() {
+    if(abilityCount < 1) return;
+
+    const wrapper = document.getElementById('abilities');
+    const lastAbility = document.getElementById(`ability${abilityCount}`);
+
+    wrapper.removeChild(lastAbility);
+    abilityCount--;
+}
+
+// ELEMENTS
+function addElement() {
+    elementCount++;
+    
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', `element${elementCount}`);
+
+    const elements = document.getElementById('elements');
+    elements.appendChild(wrapper);
+    
+    const percent = document.createElement('input');
+    percent.setAttribute('type', 'number');
+    percent.setAttribute('id', `percent_element${elementCount}`);
+    percent.setAttribute('placeholder', 'Percent');
+
+    const selectDif = document.createElement('select');
+    selectDif.setAttribute('id', `select_dif_element${elementCount}`);
+    selectDif.insertAdjacentHTML('beforeend', 
+        '<option value="-">less damage from</option>\
+         <option value="">more damage against</option>');
+
+    const selectElement = document.createElement('select');
+    selectElement.setAttribute('id', `select_element${elementCount}`);
+    selectElement.insertAdjacentHTML('beforeend', 
+        '<option value="bugPercent">Bug</option>\
+         <option value="darkPercent">Dark</option>\
+         <option value="dragonPercent">Dragon</option>\
+         <option value="electricPercent">Electric</option>\
+         <option value="fairyPercent">Fairy</option>\
+         <option value="fightingPercent">Fighting</option>\
+         <option value="firePercent">Fire</option>\
+         <option value="flyingPercent">Flying</option>\
+         <option value="ghostPercent">Ghost</option>\
+         <option value="grassPercent">Grass</option>\
+         <option value="groundPercent">Ground</option>\
+         <option value="icePercent">Ice</option>\
+         <option value="normalPercent">Normal</option>\
+         <option value="poisonPercent">Poison</option>\
+         <option value="psychicPercent">Psychic</option>\
+         <option value="rockPercent">Rock</option>\
+         <option value="steelPercent">Steel</option>\
+         <option value="waterPercent">Water</option>');
+    
+    wrapper.appendChild(percent);
+    wrapper.appendChild(selectDif);
+    wrapper.appendChild(selectElement);
+}
+
+function removeElement() {
+    if(elementCount < 1) return;
+
+    const wrapper = document.getElementById('elements');
+    const lastElement = document.getElementById(`element${elementCount}`);
+
+    wrapper.removeChild(lastElement);
+    elementCount--;
+}
+
+// VOICES
+function addVoice() {
+    voiceCount++;
+
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', `voice${voiceCount}`);
+
+    const voices = document.getElementById('voices');
+
+    if(voiceCount === 1) {
+        const interval = document.createElement('input');
+        interval.setAttribute('type', 'number');
+        interval.setAttribute('id', 'voiceInterval');
+        interval.setAttribute('placeholder', 'Interval');
+
+        const chance = document.createElement('input');
+        chance.setAttribute('type', 'number');
+        chance.setAttribute('id', 'voiceChance');
+        chance.setAttribute('placeholder', 'Chance');
+
+        voices.appendChild(interval);
+        voices.appendChild(chance);
+    }
+    
+    voices.appendChild(wrapper);
+    
+    const sentence = document.createElement('input');
+    sentence.setAttribute('type', 'text');
+    sentence.setAttribute('id', `sentence${voiceCount}`);
+    sentence.setAttribute('placeholder', `Sentence ${voiceCount}`);
+
+    wrapper.appendChild(sentence);
+}
+
+function removeVoice() {
+    if(voiceCount < 1) return;
+
+    const wrapper = document.getElementById('voices');
+    const lastVoice = document.getElementById(`voice${voiceCount}`);
+
+    wrapper.removeChild(lastVoice);
+
+    if(voiceCount === 1) {
+        const interval = document.getElementById('voiceInterval');
+        const chance = document.getElementById('voiceChance');
+
+        wrapper.removeChild(interval);
+        wrapper.removeChild(chance);
+    }
+
+    voiceCount--;
+}
+
+// LOOTS
+function addLoot() {
+    lootCount++;
+
+    const wrapper = document.createElement('div');
+    wrapper.setAttribute('id', `loot${lootCount}`);
+
+    const loots = document.getElementById('loots');    
+    loots.appendChild(wrapper);
+    
+    const itemID = document.createElement('input');
+    itemID.setAttribute('type', 'number');
+    itemID.setAttribute('id', `id_item${lootCount}`);
+    itemID.setAttribute('placeholder', 'Item ID');
+
+    const chance = document.createElement('input');
+    chance.setAttribute('type', 'number');
+    chance.setAttribute('id', `chance_item${lootCount}`);
+    chance.setAttribute('placeholder', 'Chance');
+
+    const countMax = document.createElement('input');
+    countMax.setAttribute('type', 'number');
+    countMax.setAttribute('id', `countmax_item${lootCount}`);
+    countMax.setAttribute('placeholder', 'Countmax');
+
+    wrapper.appendChild(itemID);
+    wrapper.appendChild(chance);
+    wrapper.appendChild(countMax);
+}
+
+function removeLoot() {
+    if(lootCount < 1) return;
+
+    const wrapper = document.getElementById('loots');
+    const lastLoot = document.getElementById(`loot${lootCount}`);
+
+    wrapper.removeChild(lastLoot);
+
+    lootCount--;
+}
+
 function generateXML() {
     let code = document.getElementById("code");
 
@@ -50,73 +307,62 @@ function generateXML() {
     let spd = document.getElementById("spd").value || 1;
 
     // flags
-    let pushable = document.getElementById("pushable").checked;
-    let canpushitems = document.getElementById("canpushitems").checked;
-    let canpushcreatures = document.getElementById("canpushcreatures").checked;
-    let canwalkonenergy = document.getElementById("canwalkonenergy").checked;
-    let canwalkonfire = document.getElementById("canwalkonfire").checked;
-    let catchable = document.getElementById("catchable").checked;
-    let attackable = document.getElementById("attackable").checked;
-    let hostile = document.getElementById("hostile").checked;
-    let illusionable = document.getElementById("illusionable").checked;
-    let convinceable = document.getElementById("convinceable").checked;
-    let targetdistance = document.getElementById("targetdistance").checked;
     let staticattack = document.getElementById("staticattack").value || 0;
     let runonhealth = document.getElementById("runonhealth").value || 0;
 
     let flags = `&lt;flags>`;
 
-    if(pushable) {
+    if(document.getElementById("pushable").checked) {
         flags += `
         &lt;flag pushable="1" />`;
     }
 
-    if(canpushitems) {
+    if(document.getElementById("canpushitems").checked) {
         flags += `
         &lt;flag canpushitems="1" />`;
     }
 
-    if(canpushcreatures) {
+    if(document.getElementById("canpushcreatures").checked) {
         flags += `
         &lt;flag canpushcreatures="1" />`;
     }
 
-    if(canwalkonenergy) {
+    if(document.getElementById("canwalkonenergy").checked) {
         flags += `
         &lt;flag canwalkonenergy="1" />`;
     }
 
-    if(canwalkonfire) {
+    if(document.getElementById("canwalkonfire").checked) {
         flags += `
         &lt;flag canwalkonfire="1" />`;
     }
 
-    if(catchable) {
+    if(document.getElementById("catchable").checked) {
         flags += `
         &lt;flag catchable="1" />`;
     }
 
-    if(attackable) {
+    if(document.getElementById("attackable").checked) {
         flags += `
         &lt;flag attackable="1" />`;
     }
 
-    if(hostile) {
+    if(document.getElementById("hostile").checked) {
         flags += `
         &lt;flag hostile="1" />`;
     }
 
-    if(illusionable) {
+    if(document.getElementById("illusionable").checked) {
         flags += `
         &lt;flag illusionable="1" />`;
     }
 
-    if(convinceable) {
+    if(document.getElementById("convinceable").checked) {
         flags += `
         &lt;flag convinceable="1" />`;
     }
 
-    if(targetdistance) {
+    if(document.getElementById("targetdistance").checked) {
         flags += `
         &lt;flag targetdistance="1" />`;
     }
@@ -127,104 +373,174 @@ function generateXML() {
     &lt;/flags>`;
 
     // moves
-    let move1Name = document.getElementById("move1Name").value;
-    let move1Learn = document.getElementById("move1Learn").value || 0;
-    let move1Cast = document.getElementById("move1Cast").value || 0;
-    // let move2Name = document.getElementById("move2Name").value || "Move";
-    // let move2Learn = document.getElementById("move2Learn").value || 0;
-    // let move2Cast = document.getElementById("move2Cast").value || 0;
-    // let move3Name = document.getElementById("move3Name").value || "Move";
-    // let move3Learn = document.getElementById("move3Learn").value || 0;
-    // let move3Cast = document.getElementById("move3Cast").value || 0;
-    // let move4Name = document.getElementById("move4Name").value || "Move";
-    // let move4Learn = document.getElementById("move4Learn").value || 0;
-    // let move4Cast = document.getElementById("move4Cast").value || 0;
-
     let moves = `&lt;moves>`;
-    
-    if(move1Name) {
-        moves += `
-        &lt;move name="${move1Name}" chanceToLearn="${move1Learn}" chanceToCast="${move1Cast}" />`;
-    }
+    if(moveCount > 0) {
+        for(let i = 1; i <= moveCount; i++){
+            let name = document.getElementById(`move${i}Name`).value || `Move ${i}`;
+            let learn = document.getElementById(`move${i}Learn`).value || 0;
+            let cast = document.getElementById(`move${i}Cast`).value || 0;
 
+        moves += `
+        &lt;move name="${name}" chanceToLearn="${learn}" chanceToCast="${cast}" />`;
+        }
+    }
     moves += `
     &lt;/moves>`;
 
     // abilities
-    let firstAbility = document.getElementById("firstAbility").value;
-    let firstAbilityLearn = document.getElementById("firstAbilityLearn").value || 0;
-    // let secondAbility = document.getElementById("secondAbility").value;
-    // let secondAbilityLearn = document.getElementById("secondAbilityLearn").value || 0;
-
     let abilities = `&lt;abilities>`;
-    
-    if(firstAbility) {
+    if(abilityCount > 0) {
+        for(let i = 1; i <= abilityCount; i++){
+            let name = document.getElementById(`select_ability${i}`).value;
+            let learn = document.getElementById(`ability${i}Learn`).value || 0;
+
         abilities += `
-        &lt;ability name="${firstAbility}" chanceToLearn="${firstAbilityLearn}" />`;
+        &lt;ability name="${name}" chanceToLearn="${learn}" />`;
+        }
     }
-
-    // if(secondAbility) {
-    //     abilities += `
-    //     &lt;ability name="${secondAbility}" chanceToLearn="${secondAbilityLearn}" />`;
-    // }
-
     abilities += `
     &lt;/abilities>`;
 
     // elements
-    let elementNumber = document.getElementById("elementNumber").value;
-    let elementDif = document.getElementById("elementDif").value;
-    let elementPercent = document.getElementById("elementPercent").value;
-
     let elements = `&lt;elements>`;
+    if(elementCount > 0) {
+        for(let i = 1; i <= elementCount; i++){
+            let percent = document.getElementById(`percent_element${i}`).value || 1;
+            let selectDif = document.getElementById(`select_dif_element${i}`).value;
+            let select = document.getElementById(`select_element${i}`).value;
 
-    if(elementNumber) {
         elements += `
-        &lt;element ${elementPercent}="${elementDif}${elementNumber}" />`;
+        &lt;element ${select}="${selectDif}${percent}" />`;
+        }
     }
-
     elements += `
     &lt;/elements>`;
 
     // voices
-    let voiceInterval = document.getElementById("voiceInterval").value || 0;
-    let voiceChance = document.getElementById("voiceChance").value || 0;
-    let voice = document.getElementById("voice").value;
+    let voices = '&lt;voices';
+    if(voiceCount > 0) {
+        let interval = document.getElementById('voiceInterval').value || 0;
+        let chance = document.getElementById('voiceChance').value || 0;
+        voices += ` interval="${interval}" chance="${chance}">`;
 
-    let voices = `&lt;voices`;
-    
-    if(voiceChance > 0) {
-        voices += ` interval="${voiceInterval}" chance="${voiceChance}">
-        &lt;voice name="${voice}" />`;
+        for(let i = 1; i <= voiceCount; i++){
+            let sentence = document.getElementById(`sentence${i}`).value || "Sentence";
+
+        voices += `
+        &lt;voice name="${sentence}" />`;
+        }
     } else {
-        voices += `>`;
+        voices += '>';
     }
-
     voices += `
     &lt;/voices>`;
 
     // loots
-    let itemID = document.getElementById("itemID").value;
-    let itemChance = document.getElementById("itemChance").value;
+    let loots = `&lt;loots>`;
+    if(lootCount > 0) {
+        for(let i = 1; i <= lootCount; i++){
+            let itemID = document.getElementById(`id_item${i}`).value || 1;
+            let chance = document.getElementById(`chance_item${i}`).value || 0;
+            let countMax = document.getElementById(`countmax_item${i}`).value || 1;
 
-    let loot = `&lt;loot>`;
-    
-    if(itemID) {
-        loot += `
-        &lt;item id="${itemID}" chance="${itemChance}" />`;
+        loots += `
+        &lt;item id="${itemID}" chance="${chance}" countmax="${countMax}" />`;
+        }    
     }
+    loots += `
+    &lt;/loots>`;
 
-    loot += `
-    &lt;/loot>`;
-
-    // immunity
-    let immunity = document.getElementById("immunity").value;
-
+    // immunities
     let immunities = `&lt;immunities>`;
     
-    if(immunity) {
+    if(document.getElementById("immunity_bug").checked) {
         immunities += `
-        &lt;immunity name="${immunity}" />`;
+        &lt;immunity bug="1" />`;
+    }
+
+    if(document.getElementById("immunity_dark").checked) {
+        immunities += `
+        &lt;immunity dark="1" />`;
+    }
+
+    if(document.getElementById("immunity_dragon").checked) {
+        immunities += `
+        &lt;immunity dragon="1" />`;
+    }
+
+    if(document.getElementById("immunity_eletric").checked) {
+        immunities += `
+        &lt;immunity eletric="1" />`;
+    }
+
+    if(document.getElementById("immunity_fairy").checked) {
+        immunities += `
+        &lt;immunity fairy="1" />`;
+    }
+
+    if(document.getElementById("immunity_fighting").checked) {
+        immunities += `
+        &lt;immunity fighting="1" />`;
+    }
+
+    if(document.getElementById("immunity_fire").checked) {
+        immunities += `
+        &lt;immunity fire="1" />`;
+    }
+
+    if(document.getElementById("immunity_flying").checked) {
+        immunities += `
+        &lt;immunity flying="1" />`;
+    }
+
+    if(document.getElementById("immunity_ghost").checked) {
+        immunities += `
+        &lt;immunity ghost="1" />`;
+    }
+
+    if(document.getElementById("immunity_grass").checked) {
+        immunities += `
+        &lt;immunity grass="1" />`;
+    }
+
+    if(document.getElementById("immunity_ground").checked) {
+        immunities += `
+        &lt;immunity ground="1" />`;
+    }
+
+    if(document.getElementById("immunity_ice").checked) {
+        immunities += `
+        &lt;immunity ice="1" />`;
+    }
+
+    if(document.getElementById("immunity_normal").checked) {
+        immunities += `
+        &lt;immunity normal="1" />`;
+    }
+
+    if(document.getElementById("immunity_poison").checked) {
+        immunities += `
+        &lt;immunity poison="1" />`;
+    }
+
+    if(document.getElementById("immunity_psychic").checked) {
+        immunities += `
+        &lt;immunity psychic="1" />`;
+    }
+
+    if(document.getElementById("immunity_rock").checked) {
+        immunities += `
+        &lt;immunity rock="1" />`;
+    }
+
+    if(document.getElementById("immunity_steel").checked) {
+        immunities += `
+        &lt;immunity steel="1" />`;
+    }
+
+    if(document.getElementById("immunity_water").checked) {
+        immunities += `
+        &lt;immunity water="1" />`;
     }
 
     immunities += `
@@ -264,16 +580,10 @@ function generateXML() {
     ${abilities}
     ${elements}
     ${voices}
-    ${loot}
+    ${loots}
     ${immunities}
 &lt;/pokemon>`;
-}
 
-function copy() {
-    const copyText = document.getElementById("code").textContent;
-    const textArea = document.createElement('textarea');
-    textArea.textContent = copyText;
-    document.body.append(textArea);
-    textArea.select();
-    document.execCommand("copy");
+location.href = "#wrapper-code";
+copy();
 }
