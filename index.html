@@ -9,281 +9,335 @@
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/main.css" rel="stylesheet">
     </head>
-    <body class="row px-3 py-3">
-        <h1 class="text-center">Pokémon Generator Ruby Server</h1>
-        <section class="col-md-6">
-            <h2>Info</h2>
+    <body class="px-3 py-3">
+        <div class="row">
+            <h1 class="text-center">Pokémon Generator Ruby Server</h1>
+            <section class="col-md-6">
+                <h2>Info</h2>
 
-            <input type="text" id="pokemon" placeholder="Pokémon">
-            <input type="number" id="number" placeholder="Number">
-            <input type="text" id="description" placeholder="Name Description">
-            <input type="number" id="exp" placeholder="Exp">
-            <input type="number" id="catchRate" placeholder="Catch Rate">
+                <input type="text" id="pokemon" placeholder="Pokémon">
+                <input type="number" id="number" placeholder="Number">
+                <input type="text" id="description" placeholder="Name Description">
+                <input type="number" id="exp" placeholder="Exp">
+                <input type="number" id="catchRate" placeholder="Catch Rate">
+                
+                <br>
+                
+                <input type="number" id="type" placeholder="Look Type">
+                <input type="number" id="corpse" placeholder="Corpse ID">
+                <input type="number" id="charged" placeholder="Icon Charged">
+                <input type="number" id="discharged" placeholder="Icon Discharged">
+                <input type="number" id="portrait" placeholder="Portrait ID">
+                
+                <br>
+                
+                <select id="spawn">
+                    <option value="anytime">Spawn At: Anytime</option>
+                    <option value="day">Spawn At: Day</option>
+                    <option value="night">Spawn At: Night</option>
+                </select>
+                <input type="number" id="targetChangeInterval" placeholder="Target Change Interval">
+                <input type="number" id="targetChangeChance" placeholder="Target Change Chance">
+                <input type="text" id="weight" placeholder="Weight">
+                <input type="text" id="height" placeholder="Height">
+
+                <h3>Shiny</h3>
+
+                <input type="number" id="shinyChance" placeholder="Chance">
+                <input type="number" id="shinyType" placeholder="Look Type">
+                <input type="number" id="shinyCorpse" placeholder="Corpse ID">
+                <br>
+                <input type="number" id="shinyCharged" placeholder="Icon Charged">
+                <input type="number" id="shinyDischarged" placeholder="Icon Discharged">
+                <input type="number" id="shinyPortrait" placeholder="Portrait ID">
+
+                <h3>Evolution</h3>
+
+                <select id="evolutionAt">
+                    <option value="anytime">Evolution at: Anytime</option>
+                    <option value="day">Evolution at: Day</option>
+                    <option value="night">Evolution at: Night</option>
+                </select>
+                <input type="text" id="evolutionTo" placeholder="Evolution to">
+                <input type="number" id="stoneID" placeholder="Stone ID">
+
+                <hr>
+
+                <h2>Types</h2>
+                
+                <select id="firstType">
+                    <option value="bug">First: Bug</option>
+                    <option value="dark">First: Dark</option>
+                    <option value="dragon">First: Dragon</option>
+                    <option value="electric">First: Electric</option>
+                    <option value="fairy">First: Fairy</option>
+                    <option value="fighting">First: Fighting</option>
+                    <option value="fire">First: Fire</option>
+                    <option value="flying">First: Flying</option>
+                    <option value="ghost">First: Ghost</option>
+                    <option value="grass">First: Grass</option>
+                    <option value="ground">First: Ground</option>
+                    <option value="ice">First: Ice</option>
+                    <option value="normal">First: Normal</option>
+                    <option value="poison">First: Poison</option>
+                    <option value="psychic">First: Psychic</option>
+                    <option value="rock">First: Rock</option>
+                    <option value="steel">First: Steel</option>
+                    <option value="water">First: Water</option>
+                </select>
+                
+                <select id="secondType">
+                    <option value="">Second: None</option>
+                    <option value="bug">Second: Bug</option>
+                    <option value="dark">Second: Dark</option>
+                    <option value="dragon">Second: Dragon</option>
+                    <option value="electric">Second: Electric</option>
+                    <option value="fairy">Second: Fairy</option>
+                    <option value="fighting">Second: Fighting</option>
+                    <option value="fire">Second: Fire</option>
+                    <option value="flying">Second: Flying</option>
+                    <option value="ghost">Second: Ghost</option>
+                    <option value="grass">Second: Grass</option>
+                    <option value="ground">Second: Ground</option>
+                    <option value="ice">Second: Ice</option>
+                    <option value="normal">Second: Normal</option>
+                    <option value="poison">Second: Poison</option>
+                    <option value="psychic">Second: Psychic</option>
+                    <option value="rock">Second: Rock</option>
+                    <option value="steel">Second: Steel</option>
+                    <option value="water">Second: Water</option>
+                </select>
+
+                <hr>
+
+                <h2>Genders</h2>
+                
+                <label>% Male:</label>
+                <input type="text" id="male" placeholder="Ex: 87.5">
+
+                <label>% Female:</label>
+                <input type="text" id="female" placeholder="Ex: 12.5">
+
+                <hr>
+
+                <h2>Base Stats</h2>
+                
+                <input type="number" id="hp" placeholder="HP">
+                <input type="number" id="atk" placeholder="Attack">
+                <input type="number" id="def" placeholder="Defense">
+                <br>
+                <input type="number" id="spatk" placeholder="Special Attack">
+                <input type="number" id="spdef" placeholder="Special Defense">
+                <input type="number" id="spd" placeholder="Speed">
+
+                <hr>
+
+                <h2>Flags</h2>
+                
+                <label class="mr-2"><input type="checkbox" id="pushable" value="1">Pushable</label>
+                <label class="mr-2"><input type="checkbox" id="canpushitems" value="1">Can Push Items</label>
+                <label class="mr-2"><input type="checkbox" id="canpushcreatures" value="1">Can Push Creatures</label>
+                <label class="mr-2"><input type="checkbox" id="canwalkonenergy" value="1">Can Walk On Energy</label>
+                <label class="mr-2"><input type="checkbox" id="canwalkonfire" value="1">Can Walk On Fire</label>
+                <br>
+                <label class="mr-2"><input type="checkbox" id="catchable" value="1" checked>Catchable</label>
+                <label class="mr-2"><input type="checkbox" id="attackable" value="1" checked>Attackable</label>
+                <label class="mr-2"><input type="checkbox" id="hostile" value="1" checked>Hostile</label>
+                <label class="mr-2"><input type="checkbox" id="illusionable" value="1" checked>Illusionable</label>
+                <label class="mr-2"><input type="checkbox" id="convinceable" value="1" checked>Convinceable</label>
+                <label class="mr-2"><input type="checkbox" id="targetdistance" value="1" checked>Target Distance</label>
+                
+                <br>
+                <label class="mr-2"><input type="number" id="staticattack" value="90">Static Attack</label>
+                <br>
+                <label class="mr-2"><input type="number" id="runonhealth" value="15">Run On Health</label>
+            </section>
+
+            <section class="col-md-6">
+                <h2>Moves <button class="add">+</button></h2>
+                
+                <!-- <label class="mr-2">Move 1</label>
+                <input type="text" id="move1Name" placeholder="Name">
+                <input type="number" id="move1Learn" placeholder="Chance to learn">
+                <input type="number" id="move1Cast" placeholder="Chance to cast"> -->
+                
+                <!-- <br>
+                <label class="mr-2">Move 2</label>
+                <input type="text" id="move2Name" placeholder="Name">
+                <input type="number" id="move2Learn" placeholder="Chance to learn">
+                <input type="number" id="move2Cast"placeholder="Chance to cast">
+                <br>
+                <label class="mr-2">Move 3</label>
+                <input type="text" id="move3Name" placeholder="Name">
+                <input type="number" id="move3Learn" placeholder="Chance to learn">
+                <input type="number" id="move3Cast"placeholder="Chance to cast">
+                <br>
+                <label class="mr-2">Move 4</label>
+                <input type="text" id="move4Name" placeholder="Name">
+                <input type="number" id="move4Learn" placeholder="Chance to learn">
+                <input type="number" id="move4Cast"placeholder="Chance to cast"> -->
+
+                <hr>
+
+                <h2>Abilities <button class="add">+</button></h2>
             
-            <br>
+                <!-- <label class="mr-2">Ability 1</label>
+                <select id="firstAbility">
+                    <option value="">None</option>
+                    <option value="cut">Cut</option>
+                    <option value="flash">Flash</option>
+                    <option value="fly">Fly</option>
+                    <option value="headbutt">Headbutt</option>
+                    <option value="light">Light</option>
+                    <option value="rock smash">Rock Smash</option>
+                    <option value="surf">Surf</option>
+                </select>
+                <input type="number" id="firstAbilityLearn" placeholder="Chance to learn"> -->
+                <!-- <br>
+                <select id="secondAbility">
+                    <option value="">Second: None</option>
+                    <option value="cut">Second: Cut</option>
+                    <option value="flash">Second: Flash</option>
+                    <option value="fly">Second: Fly</option>
+                    <option value="headbutt">Second: Headbutt</option>
+                    <option value="light">Second: Light</option>
+                    <option value="rock smash">Second: Rock Smash</option>
+                    <option value="surf">Second: Surf</option>
+                </select>
+                <input type="number" id="secondAbilityLearn" placeholder="Chance to learn"> -->
+
+                <hr>
+
+                <h2>Elements <button class="add">+</button></h2>
+                
+                <!-- <input type="number" id="elementNumber" placeholder="%">
+                <select id="elementDif">
+                    <option value="-">less damage from</option>
+                    <option value="">more damage against</option>
+                </select>
+                <select id="elementPercent">
+                    <option value="bugPercent">Bug</option>
+                    <option value="darkPercent">Dark</option>
+                    <option value="dragonPercent">Dragon</option>
+                    <option value="electricPercent">Electric</option>
+                    <option value="fairyPercent">Fairy</option>
+                    <option value="fightingPercent">Fighting</option>
+                    <option value="firePercent">Fire</option>
+                    <option value="flyingPercent">Flying</option>
+                    <option value="ghostPercent">Ghost</option>
+                    <option value="grassPercent">Grass</option>
+                    <option value="groundPercent">Ground</option>
+                    <option value="icePercent">Ice</option>
+                    <option value="normalPercent">Normal</option>
+                    <option value="poisonPercent">Poison</option>
+                    <option value="psychicPercent">Psychic</option>
+                    <option value="rockPercent">Rock</option>
+                    <option value="steelPercent">Steel</option>
+                    <option value="waterPercent">Water</option>
+                </select> -->
+
+                <hr>
+
+                <h2>Voices <button class="add">+</button></h2>
+                
+                <!-- <input type="number" id="voiceInterval" placeholder="Interval">
+                <input type="number" id="voiceChance" placeholder="Chance">
+                <input type="text" id="voice" placeholder="Sentence"> -->
+
+                <hr>
+
+                <h2>Loots <button class="add">+</button></h2>
+                
+                <!-- <input type="number" id="itemID" placeholder="Item ID">
+                <input type="number" id="itemChance" placeholder="Chance"> -->
+
+                <hr>
+
+                <h2>Immunity <button class="add">+</button></h2>
+                
+                <!-- <select id="immunity">
+                    <option value="">None</option>
+                    <option value="bug">Bug</option>
+                    <option value="dark">Dark</option>
+                    <option value="dragon">Dragon</option>
+                    <option value="electric">Electric</option>
+                    <option value="fairy">Fairy</option>
+                    <option value="fighting">Fighting</option>
+                    <option value="fire">Fire</option>
+                    <option value="flying">Flying</option>
+                    <option value="ghost">Ghost</option>
+                    <option value="grass">Grass</option>
+                    <option value="ground">Ground</option>
+                    <option value="ice">Ice</option>
+                    <option value="normal">Normal</option>
+                    <option value="poison">Poison</option>
+                    <option value="psychic">Psychic</option>
+                    <option value="rock">Rock</option>
+                    <option value="steel">Steel</option>
+                    <option value="water">Water</option>
+                </select> -->
+
+                <button class="btn-primary" onclick="generateXML();">Generate XML</button>
+            </section>
             
-            <input type="number" id="type" placeholder="Look Type">
-            <input type="number" id="corpse" placeholder="Corpse ID">
-            <input type="number" id="charged" placeholder="Icon Charged">
-            <input type="number" id="discharged" placeholder="Icon Discharged">
-            <input type="number" id="portrait" placeholder="Portrait ID">
-            
-            <br>
-            
-            <select id="spawn">
-                <option value="anytime">Spawn At: Anytime</option>
-                <option value="day">Spawn At: Day</option>
-                <option value="night">Spawn At: Night</option>
-            </select>
-            <input type="number" id="targetChangeInterval" placeholder="Target Change Interval">
-            <input type="number" id="targetChangeChance" placeholder="Target Change Chance">
-            <input type="text" id="weight" placeholder="Weight">
-            <input type="text" id="height" placeholder="Height">
+            <div class="wrapper-code">
+                <button class="copy" onclick="copy();">Copy</button>
+                <pre id="code">
+&lt;?xml version="1.0" encoding="ISO-8859-1"?>
+&lt;pokemon number="1" name="Pokémon" nameDescription="a Pokémon" experience="0" catchRate="0" weight="1" height="1">
+    &lt;look type="1" corpse="1" />
+    &lt;icon charged="1" discharged="1" />
+    &lt;portrait id="1" />
+    &lt;spawn at="anytime" />
+    &lt;targetchange interval="0" chance="0" />
+    &lt;shiny chance="0">
+        &lt;look type="1" corpse="1" />
+        &lt;icon charged="1" discharged="1" />
+        &lt;portrait id="1" />
+    &lt;/shiny>
+    &lt;evolutions>
+        &lt;evolution to="pokemon" at="anytime" stone="1" />
+    &lt;/evolutions>
+    &lt;type first="bug" />
+    &lt;genders>
+        &lt;gender name="male" percentage="0" />
+        &lt;gender name="female" percentage="0" />
+    &lt;/genders>
+    &lt;basestats>
+        &lt;hp value="1" />
+        &lt;attack value="1" />
+        &lt;defense value="1" />
+        &lt;specialAttack value="1" />
+        &lt;specialDefense value="1" />
+        &lt;speed value="1" />
+    &lt;/basestats>
+    &lt;flags>
+        &lt;flag catchable="1" />
+        &lt;flag attackable="1" />
+        &lt;flag hostile="1" />
+        &lt;flag illusionable="1" />
+        &lt;flag convinceable="1" />
+        &lt;flag targetdistance="1" />
+        &lt;flag staticattack="90" />
+        &lt;flag runonhealth="15" />
+    &lt;/flags>
+    &lt;moves>
+    &lt;/moves>
+    &lt;abilities>
+    &lt;/abilities>
+    &lt;elements>
+    &lt;/elements>
+    &lt;voices>
+    &lt;/voices>
+    &lt;loot>
+    &lt;/loot>
+    &lt;immunities>
+    &lt;/immunities>
+&lt;/pokemon>
+                </pre>
+            </div>
 
-            <h3>Shiny</h3>
-
-            <input type="number" id="shinyChance" placeholder="Chance">
-            <input type="number" id="shinyType" placeholder="Look Type">
-            <input type="number" id="shinyCorpse" placeholder="Corpse ID">
-            <br>
-            <input type="number" id="shinyCharged" placeholder="Icon Charged">
-            <input type="number" id="shinyDischarged" placeholder="Icon Discharged">
-            <input type="number" id="shinyPortrait" placeholder="Portrait ID">
-
-            <h3>Evolution</h3>
-
-            <select id="evolutionAt">
-                <option value="anytime">Evolution at: Anytime</option>
-                <option value="day">Evolution at: Day</option>
-                <option value="night">Evolution at: Night</option>
-            </select>
-            <input type="text" id="evolutionTo" placeholder="Evolution to">
-            <input type="number" id="stoneID" placeholder="Stone ID">
-
-            <hr>
-
-            <h2>Types</h2>
-            
-            <select id="firstType">
-                <option value="bug">First: Bug</option>
-                <option value="dark">First: Dark</option>
-                <option value="dragon">First: Dragon</option>
-                <option value="electric">First: Electric</option>
-                <option value="fairy">First: Fairy</option>
-                <option value="fighting">First: Fighting</option>
-                <option value="fire">First: Fire</option>
-                <option value="flying">First: Flying</option>
-                <option value="ghost">First: Ghost</option>
-                <option value="grass">First: Grass</option>
-                <option value="ground">First: Ground</option>
-                <option value="ice">First: Ice</option>
-                <option value="normal">First: Normal</option>
-                <option value="poison">First: Poison</option>
-                <option value="psychic">First: Psychic</option>
-                <option value="rock">First: Rock</option>
-                <option value="steel">First: Steel</option>
-                <option value="water">First: Water</option>
-            </select>
-            
-            <select id="secondType">
-                <option value="">Second: None</option>
-                <option value="bug">Second: Bug</option>
-                <option value="dark">Second: Dark</option>
-                <option value="dragon">Second: Dragon</option>
-                <option value="electric">Second: Electric</option>
-                <option value="fairy">Second: Fairy</option>
-                <option value="fighting">Second: Fighting</option>
-                <option value="fire">Second: Fire</option>
-                <option value="flying">Second: Flying</option>
-                <option value="ghost">Second: Ghost</option>
-                <option value="grass">Second: Grass</option>
-                <option value="ground">Second: Ground</option>
-                <option value="ice">Second: Ice</option>
-                <option value="normal">Second: Normal</option>
-                <option value="poison">Second: Poison</option>
-                <option value="psychic">Second: Psychic</option>
-                <option value="rock">Second: Rock</option>
-                <option value="steel">Second: Steel</option>
-                <option value="water">Second: Water</option>
-            </select>
-
-            <hr>
-
-            <h2>Genders</h2>
-            
-            <label>% Male:</label>
-            <input type="text" id="male" placeholder="Ex: 87.5">
-
-            <label>% Female:</label>
-            <input type="text" id="female" placeholder="Ex: 12.5">
-
-            <hr>
-
-            <h2>Base Stats</h2>
-            
-            <input type="number" id="hp" placeholder="HP">
-            <input type="number" id="atk" placeholder="Attack">
-            <input type="number" id="def" placeholder="Defense">
-            <br>
-            <input type="number" id="spatk" placeholder="Special Attack">
-            <input type="number" id="spdef" placeholder="Special Defense">
-            <input type="number" id="spd" placeholder="Speed">
-
-            <hr>
-
-            <h2>Flags</h2>
-            
-            <label class="mr-2"><input type="checkbox" id="pushable" value="1">Pushable</label>
-            <label class="mr-2"><input type="checkbox" id="canpushitems" value="1">Can Push Items</label>
-            <label class="mr-2"><input type="checkbox" id="canpushcreatures" value="1">Can Push Creatures</label>
-            <label class="mr-2"><input type="checkbox" id="canwalkonenergy" value="1">Can Walk On Energy</label>
-            <label class="mr-2"><input type="checkbox" id="canwalkonfire" value="1">Can Walk On Fire</label>
-            <br>
-            <label class="mr-2"><input type="checkbox" id="catchable" value="1" checked>Catchable</label>
-            <label class="mr-2"><input type="checkbox" id="attackable" value="1" checked>Attackable</label>
-            <label class="mr-2"><input type="checkbox" id="hostile" value="1" checked>Hostile</label>
-            <label class="mr-2"><input type="checkbox" id="illusionable" value="1" checked>Illusionable</label>
-            <label class="mr-2"><input type="checkbox" id="convinceable" value="1" checked>Convinceable</label>
-            <label class="mr-2"><input type="checkbox" id="targetdistance" value="1" checked>Target Distance</label>
-            
-            <br>
-            <label class="mr-2"><input type="number" id="staticattack" value="90">Static Attack</label>
-            <br>
-            <label class="mr-2"><input type="number" id="runonhealth" value="15">Run On Health</label>
-        </section>
-
-        <section class="col-md-6">
-            <h2>Moves <button class="add">+</button></h2>
-            
-            <label class="mr-2">Move 1</label>
-            <input type="text" id="move1Name" placeholder="Name">
-            <input type="number" id="move1Learn" placeholder="Chance to learn">
-            <input type="number" id="move1Cast" placeholder="Chance to cast">
-            
-            <!-- <br>
-            <label class="mr-2">Move 2</label>
-            <input type="text" id="move2Name" placeholder="Name">
-            <input type="number" id="move2Learn" placeholder="Chance to learn">
-            <input type="number" id="move2Cast"placeholder="Chance to cast">
-            <br>
-            <label class="mr-2">Move 3</label>
-            <input type="text" id="move3Name" placeholder="Name">
-            <input type="number" id="move3Learn" placeholder="Chance to learn">
-            <input type="number" id="move3Cast"placeholder="Chance to cast">
-            <br>
-            <label class="mr-2">Move 4</label>
-            <input type="text" id="move4Name" placeholder="Name">
-            <input type="number" id="move4Learn" placeholder="Chance to learn">
-            <input type="number" id="move4Cast"placeholder="Chance to cast"> -->
-
-            <hr>
-
-            <h2>Abilities <button class="add">+</button></h2>
-        
-            <label class="mr-2">Ability 1</label>
-            <select id="firstAbility">
-                <option value="">None</option>
-                <option value="cut">Cut</option>
-                <option value="flash">Flash</option>
-                <option value="fly">Fly</option>
-                <option value="headbutt">Headbutt</option>
-                <option value="light">Light</option>
-                <option value="rock smash">Rock Smash</option>
-                <option value="surf">Surf</option>
-            </select>
-            <input type="number" id="firstAbilityLearn" placeholder="Chance to learn">
-            <!-- <br>
-            <select id="secondAbility">
-                <option value="">Second: None</option>
-                <option value="cut">Second: Cut</option>
-                <option value="flash">Second: Flash</option>
-                <option value="fly">Second: Fly</option>
-                <option value="headbutt">Second: Headbutt</option>
-                <option value="light">Second: Light</option>
-                <option value="rock smash">Second: Rock Smash</option>
-                <option value="surf">Second: Surf</option>
-            </select>
-            <input type="number" id="secondAbilityLearn" placeholder="Chance to learn"> -->
-
-            <hr>
-
-            <h2>Elements <button class="add">+</button></h2>
-            
-            <input type="number" id="elementNumber" placeholder="%">
-            <select id="elementDif">
-                <option value="-">less damage from</option>
-                <option value="">more damage against</option>
-            </select>
-            <select id="elementPercent">
-                <option value="bugPercent">Bug</option>
-                <option value="darkPercent">Dark</option>
-                <option value="dragonPercent">Dragon</option>
-                <option value="electricPercent">Electric</option>
-                <option value="fairyPercent">Fairy</option>
-                <option value="fightingPercent">Fighting</option>
-                <option value="firePercent">Fire</option>
-                <option value="flyingPercent">Flying</option>
-                <option value="ghostPercent">Ghost</option>
-                <option value="grassPercent">Grass</option>
-                <option value="groundPercent">Ground</option>
-                <option value="icePercent">Ice</option>
-                <option value="normalPercent">Normal</option>
-                <option value="poisonPercent">Poison</option>
-                <option value="psychicPercent">Psychic</option>
-                <option value="rockPercent">Rock</option>
-                <option value="steelPercent">Steel</option>
-                <option value="waterPercent">Water</option>
-            </select>
-
-            <hr>
-
-            <h2>Voices <button class="add">+</button></h2>
-            
-            <input type="number" id="voiceInterval" placeholder="Interval">
-            <input type="number" id="voiceChance" placeholder="Chance">
-            <input type="text" id="voice" placeholder="Sentence">
-
-            <hr>
-
-            <h2>Loots <button class="add">+</button></h2>
-            
-            <input type="number" id="itemID" placeholder="Item ID">
-            <input type="number" id="itemChance" placeholder="Chance">
-
-            <hr>
-
-            <h2>Immunity</h2>
-            
-            <select id="immunity">
-                <option value="">None</option>
-                <option value="bug">Bug</option>
-                <option value="dark">Dark</option>
-                <option value="dragon">Dragon</option>
-                <option value="electric">Electric</option>
-                <option value="fairy">Fairy</option>
-                <option value="fighting">Fighting</option>
-                <option value="fire">Fire</option>
-                <option value="flying">Flying</option>
-                <option value="ghost">Ghost</option>
-                <option value="grass">Grass</option>
-                <option value="ground">Ground</option>
-                <option value="ice">Ice</option>
-                <option value="normal">Normal</option>
-                <option value="poison">Poison</option>
-                <option value="psychic">Psychic</option>
-                <option value="rock">Rock</option>
-                <option value="steel">Steel</option>
-                <option value="water">Water</option>
-            </select>
-
-            <button class="btn-primary" onclick="generateXML();">Generate XML</button>
-        </section>
-        
-        <div class="wrapper-code">
-            <button class="copy" onclick="copy();">Copy</button>
-            <pre id="code">Preencha todos os campos necessários acima!</pre>
+            <script src="js/main.js"></script>
         </div>
-
-        <script src="js/main.js"></script>
     </body>
 </html>
